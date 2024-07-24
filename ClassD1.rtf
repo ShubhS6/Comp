@@ -1,0 +1,328 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\colortbl ;\red0\green0\blue255;}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sl240\slmult1\f0\fs32\lang9 NSA ARChitechture and its type\par
+\par
+[5:49 PM] Abhijeet kumar\par
+./nr-gnb -c ../config/open5gs-gnb.yaml &\par
+\par
+\par
+\par
+\par
+\par
+\par
+To view the contents of startOpen5gs.sh, you can use the following command:\par
+ \par
+bash\par
+Copy code\par
+cat startOpen5gs.sh\par
+This will display the script's content directly in the terminal. Alternatively, you can use less if you expect the file to be long and want to scroll through it:\par
+ \par
+bash\par
+Copy code\par
+less startOpen5gs.sh\par
+Example Content of a Start Script\par
+A typical start script for Open5GS might look something like this:\par
+ \par
+bash\par
+Copy code\par
+#!/bin/bash\par
+# Start Open5GS services\par
+sudo systemctl start open5gs-mmed\par
+sudo systemctl start open5gs-sgwud\par
+sudo systemctl start open5gs-upfd\par
+sudo systemctl start open5gs-sgwcd\par
+sudo systemctl start open5gs-pcrfd\par
+sudo systemctl start open5gs-amfd\par
+sudo systemctl start open5gs-nrfd\par
+sudo systemctl start open5gs-smfd\par
+sudo systemctl start open5gs-upfd\par
+echo "Open5GS services started."\par
+This script ensures that all the necessary Open5GS services are started in the correct order.\par
+Executing the Script\par
+To execute the script, you might need to make it executable first if it is not already:\par
+ \par
+bash\par
+Copy code\par
+chmod +x startOpen5gs.sh\par
+Then, you can run it with:\par
+ \par
+bash\par
+Copy code\par
+./startOpen5gs.sh\par
+Checking for Errors\par
+If there are any issues starting the services, you can check their status using:\par
+ \par
+bash\par
+Copy code\par
+sudo systemctl status open5gs-mmed\par
+sudo systemctl status open5gs-sgwud\par
+# Repeat for other services as needed\par
+ \par
+ \par
+ \par
+ \par
+Cd/etc/open5gs/\par
+Ls\par
+Ls -lrt\par
+More *.yaml\par
+More amf.yaml\par
+Grep -I "addr" *.yaml\par
+Sudo tail -f amf.logmore amf.yaml\par
+Step 1: Start the gNB Navigate to the Build... by Abhijeet kumar\par
+Abhijeet kumar\par
+5:54 PM\par
+Step 1: Start the gNB\par
+Navigate to the Build Directory:\par
+sh\par
+Copy code\par
+cd ~/UERANSIM/build\par
+Start the gNB:\par
+sh\par
+Copy code\par
+./nr-gnb -c ../config/open5gs-gnb.yaml &\par
+Step 2: Start the UE\par
+Navigate to the Build Directory: If you are not already in the build directory:\par
+sh\par
+Copy code\par
+cd ~/UERANSIM/build\par
+Start the UE:\par
+sh\par
+Copy code\par
+./nr-ue -c ../config/open5gs-ue.yaml &\par
+Step 3: Monitor Logs\par
+To ensure that both gNB and UE are running correctly, you should monitor their logs.\par
+Monitor gNB Logs:\par
+sh\par
+Copy code\par
+tail -f gnb.log\par
+Monitor UE Logs:\par
+sh\par
+Copy code\par
+tail -f ue.log\par
+Complete Commands Summary\par
+Navigate to the Build Directory:\par
+sh\par
+Copy code\par
+cd ~/UERANSIM/build\par
+Start the gNB:\par
+sh\par
+Copy code\par
+./nr-gnb -c ../config/open5gs-gnb.yaml &\par
+Start the UE:\par
+sh\par
+Copy code\par
+./nr-ue -c ../config/open5gs-ue.yaml &\par
+Monitor gNB Logs:\par
+sh\par
+Copy code\par
+tail -f gnb.log\par
+Monitor UE Logs:\par
+sh\par
+Copy code\par
+tail -f ue.log\par
+ \par
+Navigate to the Open5GS Configuration Direc... by Abhijeet kumar\par
+Abhijeet kumar\par
+5:54 PM\par
+Navigate to the Open5GS Configuration Directory:\par
+sh\par
+Copy code\par
+cd /etc/open5gs/\par
+List All Configuration Files:\par
+sh\par
+Copy code\par
+ls -lrt\par
+View the Contents of Each Configuration File: Use cat, more, or less to view the contents. For example:\par
+AMF Configuration:\par
+sh\par
+Copy code\par
+cat amf.yaml\par
+SMF Configuration:\par
+sh\par
+Copy code\par
+cat smf.yaml\par
+UPF Configuration:\par
+sh\par
+Copy code\par
+cat upf.yaml\par
+NRF Configuration:\par
+sh\par
+Copy code\par
+cat nrf.yaml\par
+Other Network Functions:\par
+sh\par
+Copy code\par
+cat ausf.yaml\par
+cat bsf.yaml\par
+cat hss.yaml\par
+cat mme.yaml\par
+cat pcf.yaml\par
+cat pcrf.yaml\par
+cat scp.yaml\par
+cat udm.yaml\par
+cat udr.yaml\par
+Navigate to the Configuration Directory:\par
+sh\par
+Copy code\par
+cd /etc/open5gs/\par
+List All Configuration Files:\par
+sh\par
+Copy code\par
+ls -lrt\par
+View Specific Configuration Files:\par
+sh\par
+Copy code\par
+cat amf.yaml\par
+cat smf.yaml\par
+cat upf.yaml\par
+cat nrf.yaml\par
+cat ausf.yaml\par
+cat bsf.yaml\par
+cat hss.yaml\par
+cat mme.yaml\par
+cat pcf.yaml\par
+cat pcrf.yaml\par
+cat scp.yaml\par
+cat udm.yaml\par
+cat udr.yaml\par
+Navigate to the Configuration Directory:\par
+sh\par
+Copy code\par
+cd /etc/open5gs/\par
+List All Configuration Files:\par
+sh\par
+Copy code\par
+ls -lrt\par
+View the Contents of the Configuration Files:\par
+sh\par
+Copy code\par
+cat amf.yaml\par
+cat smf.yaml\par
+cat upf.yaml\par
+cat nrf.yaml\par
+cat ausf.yaml\par
+cat bsf.yaml\par
+cat hss.yaml\par
+cat mme.yaml\par
+cat pcf.yaml\par
+cat pcrf.yaml\par
+cat scp.yaml\par
+cat udm.yaml\par
+cat udr.yaml\par
+Edit Configuration Files:\par
+sh\par
+Copy code\par
+sudo nano /etc/open5gs/amf.yaml\par
+sudo nano /etc/open5gs/smf.yaml\par
+sudo nano /etc/open5gs/upf.yaml\par
+sudo nano /etc/open5gs/nrf.yaml\par
+Restart Open5GS Services:\par
+sh\par
+Copy code\par
+sudo systemctl restart open5gs-amfd\par
+sudo systemctl restart open5gs-smfd\par
+sudo systemctl restart open5gs-upfd\par
+sudo systemctl restart open5gs-nrfd\par
+Check Service Status:\par
+sh\par
+Copy code\par
+sudo systemctl status open5gs-amfd\par
+sudo systemctl status open5gs-smfd\par
+sudo systemctl status open5gs-upfd\par
+sudo systemctl status open5gs-nrfd\par
+Monitor Log Files:\par
+sh\par
+Copy code\par
+sudo tail -f /var/log/open5gs/amf.log\par
+sudo tail -f /var/log/open5gs/smf.log\par
+sudo tail -f /var/log/open5gs/upf.log\par
+sudo tail -f /var/log/open5gs/nrf.log\par
+Ping a Network Function:\par
+sh\par
+Copy code\par
+ping <IP_ADDRESS_OF_NF>\par
+Check Open Ports:\par
+sh\par
+Copy code\par
+sudo netstat -tulnp | grep <PORT_NUMBER>\par
+Access Open5GS WebUI:\par
+Ensure the WebUI service is running.\par
+Open a web browser and navigate to the WebUI address (e.g., {{\field{\*\fldinst{HYPERLINK http://<WEBUI_IP>:<PORT> }}{\fldrslt{http://<WEBUI_IP>:<PORT>\ul0\cf0}}}}\f0\fs32 ).\par
+Add a Subscriber Using WebUI:\par
+Log in to the Open5GS WebUI.\par
+Navigate to the Subscriber Management section.\par
+Add the subscriber details (IMSI, keys, etc.).\par
+Connect to MongoDB:\par
+sh\par
+Copy code\par
+mongo --port 27017\par
+Query Subscriber Information:\par
+js\par
+Copy code\par
+use open5gs\par
+db.subscribers.find().pretty()\par
+Update Package Lists and Upgrade Open5GS:\par
+sh\par
+Copy code\par
+sudo apt-get update\par
+sudo apt-get upgrade open5gs\par
+Backup Configuration Files:\par
+sh\par
+Copy code\par
+tar czvf open5gs-config-backup.tar.gz /etc/open5gs/\par
+Backup MongoDB Database:\par
+sh\par
+Copy code\par
+mongodump --port 27017 --out /path/to/backup/\par
+Restore MongoDB Database:\par
+sh\par
+Copy code\par
+mongorestore --port 27017 /path/to/backup/\par
+Edit Configuration Files:\par
+sh\par
+Copy code\par
+sudo nano /etc/open5gs/amf.yaml\par
+Restart Services:\par
+sh\par
+Copy code\par
+sudo systemctl restart open5gs-amfd\par
+Check Service Status:\par
+sh\par
+Copy code\par
+sudo systemctl status open5gs-amfd\par
+Monitor Logs:\par
+sh\par
+Copy code\par
+sudo tail -f /var/log/open5gs/amf.log\par
+Verify Network Connectivity:\par
+sh\par
+Copy code\par
+ping <IP_ADDRESS_OF_NF>\par
+Use Open5GS WebUI:\par
+Open WebUI in a browser.\par
+Configure Subscribers:\par
+Use the WebUI to add subscribers.\par
+Check MongoDB for Subscriber Information:\par
+sh\par
+Copy code\par
+mongo --port 27017\par
+use open5gs\par
+db.subscribers.find().pretty()\par
+Update and Upgrade Open5GS:\par
+sh\par
+Copy code\par
+sudo apt-get update\par
+sudo apt-get upgrade open5gs\par
+Backup and Restore Configuration:\par
+sh\par
+Copy code\par
+tar czvf open5gs-config-backup.tar.gz /etc/open5gs/\par
+mongodump --port 27017 --out /path/to/backup/\par
+mongorestore --port 27017 /path/to/backup/\par
+has context menu\par
+Compose\fs22\par
+
+\pard\sa200\sl276\slmult1\par
+}
+ 

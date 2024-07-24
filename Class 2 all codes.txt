@@ -1,0 +1,119 @@
+[3:59 PM] Abhijeet kumar
+class UserEquipment:
+
+    def __init__(self):
+
+        self.state = 'DEREGISTERED'
+
+        self.registration_area = None
+
+        self.amf_info = None
+ 
+    def power_on(self):
+
+        print("UE powered on. Beginning registration process.")
+
+        self.initial_ue_message()
+ 
+    def initial_ue_message(self):
+
+        if self.state == 'DEREGISTERED':
+
+            print("UE -> RAN: Initial UE Message (Registration Request)")
+
+            print("RAN -> AMF: Forwarding UE's Registration Request")
+
+            self.receive_registration_accept()
+ 
+    def receive_registration_accept(self):
+
+        print("AMF -> RAN: Registration Accept")
+
+        print("RAN -> UE: Forwarding Registration Accept")
+
+        self.state = 'REGISTERED'
+
+        self.update_registration_area('Area A')
+
+        self.configuration_update_command()
+ 
+    def update_registration_area(self, area):
+
+        self.registration_area = area
+
+        print(f"Registration area updated to {self.registration_area}.")
+ 
+    def configuration_update_command(self):
+
+        print("AMF -> RAN: Configuration Update Command")
+
+        print("RAN -> UE: Forwarding Configuration Update Command")
+
+        self.send_configuration_update_complete()
+ 
+    def send_configuration_update_complete(self):
+
+        print("UE -> RAN: Configuration Update Complete")
+
+        print("RAN -> AMF: Forwarding Configuration Update Complete")
+
+        self.send_registration_complete()
+
+[4:00 PM] Abhijeet kumar
+#include "ns3/core-module.h"
+
+#include "ns3/network-module.h"
+
+#include "ns3/internet-module.h"
+
+#include "ns3/applications-module.h"
+ 
+#include <iostream>
+
+#include <vector>
+
+#include <string>
+ 
+using namespace ns3;
+ 
+// Define a class for Network Slice
+
+class NetworkSlice {
+
+public:
+
+    NetworkSlice(int id, std::string characteristics)
+
+        : sliceId(id), serviceCharacteristics(characteristics) {}
+ 
+    // Handle message reception from another slice
+
+    void receiveMessage(const std::string& message, int fromSliceId) {
+
+        std::cout << "Slice " << sliceId << " received message from Slice "
+
+                  << fromSliceId << ": " << message << std::endl;
+
+    }
+ 
+    // Get slice ID
+
+    int getId() const { return sliceId; }
+ 
+private:
+
+    int sliceId;
+
+    std::string serviceCharacteristics;
+
+};
+ 
+// Function to simulate sending a message from one slice to another
+
+void sendMessage(NetworkSlice& sender, NetworkSlice& receiver, const std::string& message) {
+
+    std::cout << "Slice " << sender.getId() << " sending message to Slice " << receiver.getId() << std::endl;
+
+    receiver.receiveMessage(message, sender.getId());
+
+}
